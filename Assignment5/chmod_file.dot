@@ -1,0 +1,11 @@
+digraph G {
+	//rankdir=LR
+	node [fontname=Courier, labeljust=r];
+	 "0x8ade770" [shape=box, label = "0x00417000 99                              cwd \l0x00417001 6A0F                            push byte 0xf\l0x00417003 58                              pop eax\l0x00417004 52                              push edx\l0x00417005 E8                              call 0x1\l0x00417015 5B                              pop ebx\l0x00417016 68B6010000                      push dword 0x1b6\l0x0041701b 59                              pop ecx\l"]
+	 "0x8ae0f30" [shape=box, style=filled, color=".7 .3 1.0", label = "0x0041701c chmod\l"]
+	 "0x8ae1008" [shape=box, label = "0x0041701e 6A01                            push byte 0x1\l0x00417020 58                              pop eax\l"]
+	 "0x8ae1208" [shape=box, style=filled, color=".7 .3 1.0", label = "0x00417021 exit\l"]
+	 "0x8ade770" -> "0x8ae0f30" [style = bold ]
+	 "0x8ae0f30" -> "0x8ae1008" [style = bold ]
+	 "0x8ae1008" -> "0x8ae1208" [style = bold ]
+}
